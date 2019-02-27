@@ -31,11 +31,12 @@
 		"classmap" : [
 			"src/"
 		]
+		"psr-4"
 	},
 	"extra" : {
 		"laravel" : {
 			"providers" : [
-				"src\\ssoServiceProvider"
+				"src/ssoServiceProvider"
 			]
 		}
 	},
