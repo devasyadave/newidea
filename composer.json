@@ -1,0 +1,48 @@
+{
+	"name" : "devasyadave/plugin",
+	"description" : "Provides functionality to plugin",
+	"keywords" : [
+		"environment",
+		"hhvm",
+		"xdebug"
+	],
+	"homepage" : "https://www.google.com",
+	"license" : "BSD-3-Clause",
+	"authors" : [{
+			"name" : "devasyadave",
+			"email" : "devasyadave@gmail.com"
+		}
+	],
+	"config" : {
+		"optimize-autoloader" : true,
+		"sort-packages" : true
+	},
+	"prefer-stable" : true,
+	"require" : {
+		"php" : "^7.1"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^7.5"
+	},
+	"suggest" : {
+		"ext-posix" : "*"
+	},
+	"autoload" : {
+		"classmap" : [
+			"src/"
+		]
+	},
+	"extra" : {
+		"laravel" : {
+			"providers" : [
+				"src\\ssoServiceProvider"
+			]
+		}
+	},
+	"scripts" : {
+		"post-autoload-dump" : ["@php artisan vendor:publish --tag=mo_assets"]
+	}
+	,
+
+	"minimum-stability" : "dev"
+}
