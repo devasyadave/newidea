@@ -30,13 +30,16 @@
 	"autoload" : {
 		"classmap" : [
 			"src/"
-		]
+		],
+		"psr-4" : {
+			"provider\\" : "provider/"
+		}
 		
 	},
 	"extra" : {
 		"laravel" : {
 			"providers" : [
-				"src\\ssoServiceProvider"
+				"provider\\ssoServiceProvider"
 			]
 		}
 	},
