@@ -25,7 +25,7 @@ class ssoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        require_once 'autoload.php';
+        //require_once 'autoload.php';
         $this->loadRoutesFrom(__DIR__.'/../src/routes.php');
          $this->publishes([
         __DIR__.'/../src/includes/css' => public_path('Miniorange/includes/css'),
