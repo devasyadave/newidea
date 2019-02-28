@@ -8,6 +8,7 @@
  *
  * This file is part of miniOrange SAML plugin.
  */
+namespace MiniOrange\Helper\Lib;
 
 class AESEncryption {
 	/**
