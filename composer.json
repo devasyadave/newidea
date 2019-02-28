@@ -31,12 +31,15 @@
 		"classmap" : [
 			"src/"
 		]
+		"psr-4" : [
+			"Miniorange\\" : "src"
+		]
 		
 	},
 	"extra" : {
 		"laravel" : {
 			"providers" : [
-				"src/ssoServiceProvider"
+				"Miniorange\\ssoServiceProvider"
 			]
 		}
 	},
