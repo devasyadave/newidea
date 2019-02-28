@@ -30,16 +30,13 @@
 	"autoload" : {
 		"classmap" : [
 			"src/"
-		],
-		"psr-4" : {
-			"Miniorange\\" : "src"
-		}
+		]
 		
 	},
 	"extra" : {
 		"laravel" : {
 			"providers" : [
-				"Miniorange\\ssoServiceProvider"
+				"src/ssoServiceProvider"
 			]
 		}
 	},
