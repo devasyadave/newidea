@@ -1,5 +1,5 @@
 <?php
-
+namespace MiniOrange\Helper;
 class DB {
     // private static $db_file_path = dirname(__FILE__) . '\helper\data\options.json';
     public static function get_option($key){
