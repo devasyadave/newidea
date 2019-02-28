@@ -1,6 +1,6 @@
 <?php
 
-
+namespace Miniorange;
 
 use Illuminate\Support\ServiceProvider;
 
