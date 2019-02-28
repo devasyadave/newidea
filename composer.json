@@ -33,8 +33,21 @@
 		],
 		"psr-4" : {
 			"provider\\" : "provider/"
-		}
-		
+		},
+		"files" : [
+			"Classes/Customer.php",
+			"account.php",
+			"admin_login.php",
+			"admin_logout.php",
+			"autoload.php",
+			"connector.php",
+			"how_to_setup.php",
+			"index.php",
+			"logout.php",
+			"register.php",
+			"setup.php",
+			"support.php"
+		]
 	},
 	"extra" : {
 		"laravel" : {
@@ -44,9 +57,7 @@
 		}
 	},
 	"scripts" : {
-		"post-autoload-dump" : ["@php artisan vendor:publish --tag=mo_assets"]
-	}
-	,
-
+		"post-autoload-dump" : "@php artisan vendor:publish --tag=mo_assets"
+	},
 	"minimum-stability" : "dev"
 }
