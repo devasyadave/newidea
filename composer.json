@@ -35,18 +35,18 @@
 			"provider\\" : "provider/"
 		},
 		"files" : [
-			"Classes/Customer.php",
-			"account.php",
-			"admin_login.php",
-			"admin_logout.php",
-			"autoload.php",
-			"connector.php",
-			"how_to_setup.php",
-			"index.php",
-			"logout.php",
-			"register.php",
-			"setup.php",
-			"support.php"
+			"src/Classes/Customer.php",
+			"src/account.php",
+			"src/admin_login.php",
+			"src/admin_logout.php",
+			"src/autoload.php",
+			"src/connector.php",
+			"src/how_to_setup.php",
+			"src/index.php",
+			"src/logout.php",
+			"src/register.php",
+			"src/setup.php",
+			"src/support.php"
 		]
 	},
 	"extra" : {
