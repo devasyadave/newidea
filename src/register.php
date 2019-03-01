@@ -1,6 +1,7 @@
 <?php
 
 include_once 'connector.php';
+use Illuminate\Support\Facades\Response;
 
 if(!isset($_SESSION)){
   session_id("connector");
@@ -34,13 +35,13 @@ if(isset($_POST['option']) && !empty($_POST['option'])){
         header("Location: account.php");
         exit();
       }
-
 }
 }
-if(isset($_REQUEST['option'])){
+if(session_id()=='connector'){
 if(is_user_registered()){
   header('Location: admin_login.php');
   exit();
 }
+
 }
 ?>
