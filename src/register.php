@@ -1,6 +1,6 @@
 <?php
 
-require 'connector.php';
+include_once 'connector.php';
 
 if(!isset($_SESSION)){
   session_id("connector");
@@ -24,7 +24,7 @@ if(isset($_POST['option']) && !empty($_POST['option'])){
       $user_credential = array($email => $password);
       $file = dirname(__FILE__) . '\helper\data\credentials.json';
       $json_string = json_encode($user_credential, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-      file_put_contents($file, $json_string);
+      if($file!==null)file_put_contents($file, $json_string);
       $_SESSION['authorized'] = true;
       $_SESSION['admin_email'] = $email;
       if(mo_saml_is_customer_license_verified()){

@@ -23,7 +23,7 @@ class DB {
         $updatedOptions = array_merge($tempOptions, $update);
         $file = self::getOptionsFilePath();
         $json_string = json_encode($updatedOptions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        file_put_contents($file, $json_string);
+        if($file!==null)file_put_contents($file, $json_string);
     }
 
     public static function delete_option($key){
@@ -31,7 +31,7 @@ class DB {
         unset($options[$key]);
         $file = self::getOptionsFilePath();
         $json_string = json_encode($options, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        file_put_contents($file, $json_string);
+        if($file!==null)file_put_contents($file, $json_string);
     }
 
     private static function get_options(){
@@ -44,6 +44,7 @@ class DB {
     }
 
     public static function getOptionsFilePath(){
+        if(file_exists(dirname(__FILE__) . '\data\options.json'))
         return dirname(__FILE__) . '\data\options.json';
     }
 }

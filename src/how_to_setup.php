@@ -69,7 +69,7 @@ if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
         <p id="saml_message"></p>
 
         <?php 
-          require 'connector.php';
+          include_once 'connector.php';
         ?>
         <div class="row">
             <div class="col-md-12">
@@ -104,7 +104,7 @@ if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
                     <p>Use the following URL as a link in your application from where you want to perform SSO:<br/>
                     <code>http://&lt;your-domain&gt;/sso/login.php</code></p>
                     <p>For example, you can use it as:<br/>
-                    <code>&lt;a href="http://&lt;your-domain&gt;/sso/login.php”&gt;Log in&lt;/a&gt;</code>
+                    <code>&lt;a href="http://&lt;your-domain&gt;/sso/login.php&gt;Log in&lt;/a&gt;</code>
                     <h4>Step 5:</h4>
 
                     <form id="setup_form" method="POST" action="">
@@ -174,7 +174,7 @@ if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
                     <p>Use the following URL as a link in your application from where you want to perform SLO:<br/>
                     <code>http://&lt;your-domain&gt;/sso/logout.php</code></p>
                     <p>For example, you can use it as:<br/>
-                    <code>&lt;a href="http://&lt;your-domain&gt;/sso/logout.php”&gt;Log out&lt;/a&gt;</code>
+                    <code>&lt;a href="http://&lt;your-domain&gt;/sso/logout.php&gt;Log out&lt;/a&gt;</code>
                     
                   </div>
                 </div>

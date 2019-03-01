@@ -11,7 +11,7 @@ define('MSSP_TEST_MODE', FALSE);
  * plugin. Removes the pain of individually including all files. This class
  * loads the files only as the need arises.
  */
-class SplClassLoader
+/*class SplClassLoader
 {
     private $_fileExtension = '.php';
     private $_namespace;
@@ -23,16 +23,16 @@ class SplClassLoader
         $this->_namespace = $ns;
         $this->_includePath = $includePath;
     }
-
+*/
     /** Installs this class loader on the SPL autoload stack. */
-    public function register()
+    /*public function register()
     {
         spl_autoload_register(array($this, 'loadClass'));
     }
 
 
     /**  Uninstalls this class loader from the SPL autoloader stack. */
-    public function unregister()
+   /* public function unregister()
     {
         spl_autoload_unregister(array($this, 'loadClass'));
     }
@@ -44,7 +44,7 @@ class SplClassLoader
      * @param string $className The name of the class to load.
      * @return void
      */
-    public function loadClass($className)
+  /*  public function loadClass($className)
     {
         if (null === $this->_namespace || $this->_namespace . $this->_namespaceSeparator ===
                 substr($className, 0, strlen($this->_namespace . $this->_namespaceSeparator)))
@@ -64,4 +64,4 @@ class SplClassLoader
 }
 
 $idpClassLoader = new SplClassLoader('MiniOrange', realpath(__DIR__ . DIRECTORY_SEPARATOR . ".."));
-$idpClassLoader->register();
+$idpClassLoader->register();*/

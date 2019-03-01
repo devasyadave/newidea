@@ -5,6 +5,7 @@ if(!isset($_SESSION)){
 }
 unset($_SESSION['authorized']);
 
+if(isset($_REQUEST['option'])){
 session_destroy();
-header("Location: admin_login.php");
+header("Location: admin_login.php");}
 ?>

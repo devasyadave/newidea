@@ -128,7 +128,7 @@ class PluginSettings
         $updatedOptions = array_merge($tempOptions, $update);
         $file = self::getOptionsFilePath();
         $json_string = json_encode($updatedOptions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        file_put_contents($file, $json_string);
+        if($file!==null)file_put_contents($file, $json_string);
     }
 
     public static function delete_option($key){
@@ -136,7 +136,7 @@ class PluginSettings
         unset($options[$key]);
         $file = self::getOptionsFilePath();
         $json_string = json_encode($options, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        file_put_contents($file, $json_string);
+        if($file!==null)file_put_contents($file, $json_string);
     }
 
     private static function get_options(){

@@ -1,6 +1,7 @@
 <?php
+use MiniOrange\Helper\DB;
 if(!class_exists("DB")){
-    require_once dirname(__FILE__) . '/helper/DB.php';
+    
 }
     class CustomerSaml{
         public $email;

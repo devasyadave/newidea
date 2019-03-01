@@ -78,7 +78,7 @@ if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
             <div class="col-md-12">
               <div class="tile">
               <?php
-                require 'connector.php';
+                include_once 'connector.php';
                 if(!mo_saml_is_customer_license_verified()){
                 ?>
                   <div class="mo_saml_not_registered">
