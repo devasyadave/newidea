@@ -46,7 +46,7 @@
 			"src/register.php",
 			"src/setup.php",
 			"src/support.php",
-			"src/jsLoader",
+			"src/jsLoader.php",
 			"src/how_to_setup.php"
 		]
 	},

@@ -6,6 +6,7 @@ Author: miniOrange
 */
 include_once 'connector.php';
 
+if(isset($_REQUEST['option'])) 
 if(!is_user_registered()){
     header("Location: register.php");
     exit();
