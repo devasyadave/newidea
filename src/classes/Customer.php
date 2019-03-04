@@ -126,7 +126,8 @@ if(!class_exists("DB")){
             $content = curl_exec ( $ch );
     
             if (curl_errno ( $ch )) {
-                echo 'Error in sending curl Request';
+                echo "129";
+                echo "$ch Error in sending curl Request";
                 exit ();
             }
             curl_close ( $ch );
@@ -163,14 +164,15 @@ if(!class_exists("DB")){
             curl_setopt ( $ch, CURLOPT_POSTFIELDS, $field_string );
             
             $content = curl_exec ( $ch );
-    
-            if (curl_errno ( $ch )) {
-                echo 'Error in sending curl Request';
+            return $content;
+           /* if (curl_errno ( $ch )) {
+                echo "169";
+                echo "$ch Error in sending curl Request";
                 exit ();
             }
             curl_close ( $ch );
             
-            return $content;
+            return $content;*/
         }
 
         function mo_saml_vl($code,$active) {
@@ -236,7 +238,8 @@ if(!class_exists("DB")){
             $content = curl_exec ( $ch );
     
             if (curl_errno ( $ch )) {
-                echo 'Error in sending curl Request';
+                echo "241";
+                echo "$ch Error in sending curl Request";
                 exit ();
             }
             

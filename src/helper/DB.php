@@ -1,7 +1,7 @@
 <?php
 namespace MiniOrange\Helper;
 class DB {
-    // private static $db_file_path = dirname(__FILE__) . '\helper\data\options.json';
+    //private static $db_file_path = dirname(__FILE__) . '\helper\data\options.json';
     public static function get_option($key){
         $options = self::get_options();
         if(!empty($options)){
@@ -44,7 +44,7 @@ class DB {
     }
 
     public static function getOptionsFilePath(){
-        if(file_exists(dirname(__FILE__) . '\data\options.json'))
+        //if(file_exists(dirname(__FILE__) . '\data\options.json'))
         return dirname(__FILE__) . '\data\options.json';
     }
 }

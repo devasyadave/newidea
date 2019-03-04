@@ -126,7 +126,7 @@
                       </div>
 
                     <h4>Step 6:</h4>
-                      <p>Please provide your applicaion URL in the above field and use the following code in your application to access the user attributes:</p>
+                      <p>Please provide your application URL in the above field and use the following code in your application to access the user attributes:</p>
                       <figure style="background-color:#979b9f; border-radius:5px;">
                       <pre>
                       <code>

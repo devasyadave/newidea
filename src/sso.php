@@ -62,6 +62,7 @@ final class SSO
                         If you want to redirect to a different URL after logging in, configure the Application url in Step 5 of <b>How to Setup?</b> tab of the connector.
                         </body>
                         </html>';
+                        exit;
                     }
                 }
             } catch (\Exception $e) {
