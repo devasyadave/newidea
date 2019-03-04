@@ -2,7 +2,7 @@
 
 namespace MiniOrange;
 
-include_once 'autoload.php';
+//include_once 'autoload.php';
 
 use MiniOrange\Classes\Actions\ProcessResponseAction;
 use MiniOrange\Classes\Actions\ProcessUserAction;
@@ -22,6 +22,7 @@ final class SSO
         $pluginSettings = PluginSettings::getPluginSettings();
         if(array_key_exists('SAMLResponse', $_REQUEST) && !empty($_REQUEST['SAMLResponse'])) {
             try{
+                
                 $relayStateUrl   = array_key_exists('RelayState', $_REQUEST) ? $_REQUEST['RelayState'] : '/';
                 $samlResponseObj = ReadResponseAction::execute(); //read the samlResponse from IDP
                 $responseAction = new ProcessResponseAction($samlResponseObj);
@@ -64,10 +65,11 @@ final class SSO
                     }
                 }
             } catch (\Exception $e) {
-                if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE))
+                /*if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE)===0)
                     (new TestResultActions(array()))->setSamlException($e)->execute();
                 else
-                    Utilities::showErrorMessage($e->getMessage());
+                    Utilities::showErrorMessage($e->getMessage());*/
+                echo "Exception encountered";
             }
         } else {
             Utilities::showErrorMessage(Messages::MISSING_SAML_RESPONSE);

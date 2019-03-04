@@ -59,16 +59,25 @@ class ProcessResponseAction
     public function execute()
     {
         $this->validateStatusCode();
+        
         $responseSignatureData = $this->samlResponse->getSignatureData();
+       
         $assertionSignatureData = current($this->samlResponse->getAssertions())->getSignatureData();
+        
         $this->certfpFromPlugin = iconv("UTF-8", "CP1252//IGNORE", $this->certfpFromPlugin);
+        
         $this->certfpFromPlugin = preg_replace('/\s+/', '', $this->certfpFromPlugin);
-
+        
         $this->validateSignature($responseSignatureData, $assertionSignatureData);
+        
         $this->validateDestinationURL();
+        
         $this->validateResponseSignature($responseSignatureData);
+        
         $this->validateAssertionSignature($assertionSignatureData);
+        
         $this->validateIssuerAndAudience();
+        
     }
 
     /**
@@ -154,6 +163,7 @@ class ProcessResponseAction
     {
         $issuer = current($this->samlResponse->getAssertions())->getIssuer();
         $audience = current(current($this->samlResponse->getAssertions())->getValidAudiences());
+        //echo " $issuer is issuer from response $this->issuer was stored $audience is audience from response should be $this->spEntityId";exit;
         if(strcmp($this->issuer, $issuer) != 0)
             throw new InvalidIssuerException($this->issuer,$issuer,$this->samlResponse->getXML());
         if(strcmp($audience, $this->spEntityId) != 0)

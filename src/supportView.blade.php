@@ -1,4 +1,4 @@
-
+<?php use MiniOrange\Helper\DB;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Main CSS-->
-<link rel="stylesheet" type="text/css" href="includes/css/main.css">
+<link rel="stylesheet" type="text/css" href="miniorange/sso/includes/css/main.css">
 <!-- Font-icon css-->
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="app sidebar-mini rtl">
 <!-- Navbar-->
-<header class="app-header"><a class="app-header__logo" href="#" style="margin-top:10px;"><img src="resources/images/logo-home.png"></a>
+<header class="app-header"><a class="app-header__logo" href="#" style="margin-top:10px;"><img src="miniorange/sso/resources/images/logo-home.png"></a>
 <!-- Sidebar toggle button<a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> -->
 <ul class="app-nav">
 <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"><span  style="margin-left:5px"><?php  echo $_SESSION['admin_email']; ?></span><span style="padding-left:5px;"><i class="fa fa-caret-down"></i></span></i></a>
@@ -26,7 +26,7 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     
     <aside class="app-sidebar">
-      <div class="app-sidebar__user" style="padding-left:40px"><img src="resources/images/miniorange.png"  style="width:37.25px; height:50px;" alt="User Image">
+      <div class="app-sidebar__user" style="padding-left:40px"><img src="miniorange/sso/resources/images/miniorange.png"  style="width:37.25px; height:50px;" alt="User Image">
         <div style="margin-left:15px;">
           <p class="app-sidebar__user-name">PHP SAML</p>
           <p class="app-sidebar__user-designation">Connector</p>
@@ -87,7 +87,7 @@
         </div>
     </main>
     <?php
-
+        
     ?>
     <script>
         function mo_saml_valid_query(f) {

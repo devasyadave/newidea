@@ -55,6 +55,7 @@
 
         <p id="saml_message"></p>
         <?php
+        use MiniOrange\Helper\DB;
         //include_once 'connector.php';
         ?>
         <div class="row">

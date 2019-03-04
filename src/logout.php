@@ -1,6 +1,6 @@
 <?php
 
-	include_once "autoload.php";
+	//include_once "autoload.php";
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityKey;
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityDSig;
     use MiniOrange\Helper\PluginSettings;

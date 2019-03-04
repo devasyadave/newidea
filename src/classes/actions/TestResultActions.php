@@ -75,6 +75,7 @@ class TestResultActions
     public function __construct($attrs, SAMLResponseException $samlResponseException = null)
     {
         $this->attrs = $attrs;
+        if(isset($attrs['NameID']))
         $this->nameId = $attrs["NameID"];
         $this->hasExceptionOccurred = Utilities::isBlank($samlResponseException) ? FALSE : TRUE;
         $this->samlException = $samlResponseException;

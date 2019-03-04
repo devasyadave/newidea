@@ -1,18 +1,30 @@
 <?php
 
 include_once 'connector.php';
-if(!isset($_SESSION) and isset($_REQUEST['option'])){
+
+if(!isset($_SESSION)){
     session_id("connector");
     session_start();
 }
 
-if(!is_user_registered() && isset($_REQUEST['option'])){
+if(!is_user_registered()){
     header('Location: register.php');
     exit();
 }
 
 
-if(isset($_POST['option']) && $_POST['option'] == 'admin_login'){
+if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
+    if($_SESSION['authorized'] == true){
+        if(mo_saml_is_customer_license_verified()){
+            header("Location: setup.php");
+            exit();
+        } elseif(isset($_REQUEST['option'])) {
+            header("Location: account.php");
+            exit();
+        }
+    }
+}
+if(isset($_REQUEST['option']) && $_REQUEST['option'] == 'admin_login'){
     
     $email='';
     $password = '';
@@ -61,16 +73,6 @@ if(isset($_POST['option']) && $_POST['option'] == 'admin_login'){
     
 }
 
-if(isset($_SESSION['authorized']) && !empty($_SESSION['authorized'])){
-    if($_SESSION['authorized'] == true){
-        if(mo_saml_is_customer_license_verified()){
-            header("Location: setup.php");
-            exit();
-        } elseif(isset($_REQUEST['option'])) {
-            header("Location: account.php");
-            exit();
-        }
-    }
-}
+
 
 ?>
