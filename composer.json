@@ -28,6 +28,9 @@
 		"ext-posix" : "*"
 	},
 	"autoload" : {
+		"files" : [
+			"src/connector.php"
+		],
 		"classmap" : [
 			"src/"
 		],
