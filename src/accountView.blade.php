@@ -55,7 +55,7 @@
 
         <p id="saml_message"></p>
         <?php
-        include_once 'connector.php';
+        //include_once 'connector.php';
         ?>
         <div class="row">
             <div class="col-md-12">
