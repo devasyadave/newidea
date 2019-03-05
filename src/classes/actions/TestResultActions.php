@@ -26,11 +26,11 @@ class TestResultActions
     private $successHeader  = ' <div style="color: #3c763d;background-color: #dff0d8; padding:2%%;margin-bottom:20px;text-align:center; 
                                     border:1px solid #AEDB9A; font-size:18pt;">TEST SUCCESSFUL
                                 </div>
-                                <div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;" src="{{right}}"></div>';
+                                <div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;" src="miniorange/sso/resources/images/right.png"></div>';
 
     private $errorHeader    = ' <div style="color: #a94442;background-color: #f2dede;padding: 15px;margin-bottom: 20px;text-align:center;
                                     border:1px solid #E6B3B2;font-size:18pt;">TEST FAILED
-                                </div><div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;"src="{{wrong}}"></div>';
+                                </div><div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;"src="miniorange/sso/resources/wrong.png"></div>';
 
     private $commonBody  = '<span style="font-size:14pt;"><b>Hello</b>, {{email}}</span><br/>
                                 <p style="font-weight:bold;font-size:14pt;margin-left:1%%;">ATTRIBUTES RECEIVED:</p>

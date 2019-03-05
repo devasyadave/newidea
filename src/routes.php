@@ -35,8 +35,13 @@ Route::post('admin_login.php', function () {
     return view('newidea::adminLoginView');
 });
 
-Route::get('login', function () {
+Route::get('login.php/{RelayState?}', function ($RelayState = '/') {
+
     include_once 'login.php';
+});
+
+Route::get('logout', function () {
+    include_once 'logout.php';
 });
 
 Route::get('setup.php', function () {
@@ -48,9 +53,9 @@ Route::get('setup.php', function () {
 Route::post('sso.php', function () {
     include_once 'sso.php';
 });
-    Route::post('', function () {
-        include_once 'sso.php';
-    });
+Route::post('', function () {
+    include_once 'sso.php';
+});
 Route::get('admin_logout.php', function () {
     include_once 'admin_logout.php';
 });
@@ -83,5 +88,11 @@ Route::post('how_to_setup.php', function () {
     include_once 'how_to_setup.php';
     return view('newidea::howToSetupView');
 });
+
+Route::get('logout.php', function () {
+    include_once 'logout.php';
+});
+
+
 
 

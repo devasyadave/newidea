@@ -295,7 +295,8 @@
                     <!-- <button type="button" class="btn btn-primary">Add Attribute</button> -->
                     
                     </form>
-
+					<form id="test-form" name ="test-form" type="hidden" action="login.php" method="get">
+					<input type="hidden" name="RelayState" value="testconfig"></input></form>
 
                   </div>
                 </div>
@@ -317,6 +318,7 @@
                 </div>
             </div>
         </div>
+
     </main>
 
     </body>

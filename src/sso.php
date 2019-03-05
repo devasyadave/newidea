@@ -66,10 +66,10 @@ final class SSO
                     }
                 }
             } catch (\Exception $e) {
-                /*if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE)===0)
+                if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE)===0)
                     (new TestResultActions(array()))->setSamlException($e)->execute();
                 else
-                    Utilities::showErrorMessage($e->getMessage());*/
+                    Utilities::showErrorMessage($e->getMessage());
                 echo "Exception encountered";
             }
         } else {
