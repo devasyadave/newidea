@@ -91,7 +91,7 @@ Route::post('how_to_setup.php', function () {
 
 Route::get('logout.php', function () {
     include_once 'logout.php';
-});
+}); 
 
 
 

@@ -8,7 +8,7 @@ include_once 'connector.php';
 
 if(session_id() == 'connector') {
 if(!is_user_registered()){
-    header("Location: register.php");
+    header("Location: register.php");//https://www.google.com
     exit();
 } else {
     header("Location: admin_login.php");

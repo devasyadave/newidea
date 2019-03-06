@@ -13,11 +13,11 @@
     "site_ck_l": "XqBWJPTFs/U9+0exiu8/IQ==",
     "t_site_status": "4TcF4O6QSEuE3bEiMbUyCA==",
     "saml_identity_name": "miniOrange",
-    "idp_entity_id": "https://auth.miniorange.com/moas/161877/92cb063c-359c-11e9-815f-0a90fcd34004",
-    "saml_login_url": "https://auth.miniorange.com/moas/idp/samlsso/92cb063c-359c-11e9-815f-0a90fcd34004",
+    "idp_entity_id": "https://sts.windows.net/9319ca80-8064-4467-b584-67c3fd922e5a/",
+    "saml_login_url": "https://login.microsoftonline.com/9319ca80-8064-4467-b584-67c3fd922e5a/saml2",
     "saml_login_binding_type": "HttpRedirect",
-    "saml_logout_url": "https://auth.miniorange.com/moas/idp/samllogout/92cb063c-359c-11e9-815f-0a90fcd34004?cid=161877",
-    "saml_x509_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDGTCCAgGgAwIBAgIJAN4/Y8LIiM8nMA0GCSqGSIb3DQEBCwUAMEwxCzAJBgNV\r\nBAYTAklOMRMwEQYDVQQKEwptaW5pT3JhbmdlMRMwEQYDVQQLEwptaW5pT3Jhbmdl\r\nMRMwEQYDVQQDEwptaW5pT3JhbmdlMB4XDTE5MDIyMTA1NTAyMFoXDTI5MDIxODA1\r\nNTAyMFowTDELMAkGA1UEBhMCSU4xEzARBgNVBAoTCm1pbmlPcmFuZ2UxEzARBgNV\r\nBAsTCm1pbmlPcmFuZ2UxEzARBgNVBAMTCm1pbmlPcmFuZ2UwggEiMA0GCSqGSIb3\r\nDQEBAQUAA4IBDwAwggEKAoIBAQCvJO0RKvGFKHRKLCFQeMjHWfIrLzr8gJpD8bm7\r\nofWtrU/FUseiSYqK5Dqdw4otKc7lbVsYopb3Sz9iyXU2abuPyM1dQFbnuEIxxkEa\r\ntvJad/c9XYeQhffeO3TTw7OE8n7CYFp3E/TUwbR1Gl57475/jgxPZjQznjOiPJb7\r\nBMGWiwqbWT4RQQucYo584wAw3ccu7kCU2kj0+pNLpyJayHr5ZRpg+b/ISjnQLlTH\r\n7EuxSuMrJAt9YIos6j2AX2KtBsgaEVTKpnYUMwMQgaa54mYTAhUu9HciKjIyQaay\r\nKxQDWvHdqJZX+6egzpBZR6uaG2219DG7vc06MK8XLJjy0mVvAgMBAAEwDQYJKoZI\r\nhvcNAQELBQADggEBAIclJuUpegbOVzHBTjrxDkwjiHhUrdYQLI1D3kYcnytRLeKd\r\nsAbycz82skDNFhDmc9H4+pso/oJC9C0D0a7C9gnnkLKKDRW2lBR34am31fRx5I44\r\nN0lK2eHzxKmMtXGq73sox+OabKkq4GPXEUKHcudtyZU8cHFU7br9EvCijKWmGZxc\r\n3Bdp69O0RcdNvftHl+T2tuHU+MFptaLQBRVUc76b6AuNaGGkYHqUg+NP19nkBA5s\r\nj7vQpCjQIUNGuz3fRhTRw1LG8vI41a+0frxqvqnEzQF321R8aycoPT+spB2VdzKl\r\nvqA9cRaXMatJQ2gfb67Hq/yhOI4Wb0HeSCg28ww=\r\n-----END CERTIFICATE-----",
+    "saml_logout_url": "https://login.microsoftonline.com/9319ca80-8064-4467-b584-67c3fd922e5a/saml2",
+    "saml_x509_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDBTCCAe2gAwIBAgIQP8sUV4hf2ZxPfw5DB0O9CjANBgkqhkiG9w0BAQsFADAt\r\nMSswKQYDVQQDEyJhY2NvdW50cy5hY2Nlc3Njb250cm9sLndpbmRvd3MubmV0MB4X\r\nDTE5MDIwMTAwMDAwMFoXDTIxMDIwMTAwMDAwMFowLTErMCkGA1UEAxMiYWNjb3Vu\r\ndHMuYWNjZXNzY29udHJvbC53aW5kb3dzLm5ldDCCASIwDQYJKoZIhvcNAQEBBQAD\r\nggEPADCCAQoCggEBALdydYZ0uGkWWmRquSVMNYirB8pwlFfZTAXtjAwK1xnkJTfs\r\nPF8Pb1OiJ6pj1bybFFclJChNI85+HWC3MG07rbUNIZjfpczXxqJdOCijCFXbU7NT\r\n9MKP/lcifPBLljN5bw8ck8NTy4pteFCdfOes3adv5GSzksvgeOivehDSfG9sgj/1\r\nR0U3dxoDU68fsXlOuliXZaJ+kkpMSPOSiAMzkeL8a5dl2Wcfw5FXLAB2vCl0EZGz\r\nMPNhdkhwG4CU7/Ko0h0f1l46BrN1oHbPVFKoDQ10iuqk46Bud84/Pn2kZCtD8eME\r\nQ/a1V7fqT3Bmrpd0xJFFYaXvEsqy1hExXsSXrEkCAwEAAaMhMB8wHQYDVR0OBBYE\r\nFH5JQzlFI3FE9VxkkUbFT9XQDxifMA0GCSqGSIb3DQEBCwUAA4IBAQCb7re2PWF5\r\nictaUCi4Ki2AWE6fGbmVRUdf0GkI06KdHWSiOgkPdB7Oka1Fv/j4GCs/ezHa1+oA\r\nx8uU96GECBBEMnCYPqkjmNKdLYkIUrcwEe9qz12MOCKJkCuYsDdLUqv+e4wHssbA\r\nnJn2+L13UmfAb6FM1VTaKIQtPs4yZsdhnk4M+Ee2EpcvgwOl2na+m58ovspieEyI\r\n6II/TolzwP9NWbvHw5VlF0IYttQprjmQU3tQ2E6j3HpZ31B0nrnFWglUB7lEC+0m\r\nkyJUGzovNECsr+BIEMhTlCp2/rbruCCbZBppYAlbWlTFwXA8TqfE4DNATYgm90Ob\r\nQANcTnHJeRV1\r\n-----END CERTIFICATE-----",
     "force_authentication": false,
     "sp_base_url": "http://localhost:8000/",
     "sp_entity_id": "http://localhost:8000/",
@@ -25,8 +25,9 @@
     "single_logout_url": "http://localhost:8000/logout.php",
     "saml_am_email": "NameID",
     "saml_am_username": "NameID",
-    "mo_saml_custom_attrs_mapping": [],
-    "session_index": "4F8D0FC095373954EA724823A0C5120A",
+    "mo_saml_custom_attrs_mapping": {
+        "NameID": "NameID"
+    },
     "application_url": "",
     "site_logout_url": "http://localhost:8000/"
 }

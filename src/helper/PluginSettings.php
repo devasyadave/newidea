@@ -37,7 +37,7 @@ class PluginSettings
     }
 
     public function getSamlLogoutUrl(){
-        return self::get_option('smal_logout_url');
+        return self::get_option('saml_logout_url');
     }
 
     public function getLoginBindingType(){
