@@ -1,6 +1,6 @@
 <?php
 
-	//include_once "autoload.php";
+	include_once "autoload.php";
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityKey;
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityDSig;
     use MiniOrange\Helper\PluginSettings;
@@ -42,7 +42,8 @@
 		    $destination = $single_logout_url; 
             // $sessionIndex = '';
             $sessionIndex = $pluginSettings->getSessionIndex();
-		    $sendRelayState = $logout_url;
+            // $sendRelayState = $logout_url;
+            $sendRelayState = 'test';
 		
 		    $samlRequest = createLogoutRequest($nameId, $sessionIndex, $issuer, $destination, 'HttpRedirect');
 			
@@ -71,12 +72,13 @@
 
 	function createLogoutRequest($nameId, $sessionIndex = '', $issuer, $destination, $slo_binding_type = 'HttpRedirect'){
 
-		$requestXmlStr='<?xml version="1.0" encoding="UTF-8"?>' .
-						'<samlp:LogoutRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="'. generateID() .
-						'" IssueInstant="' . generateTimestamp() .
-						'" Version="2.0" Destination="'. $destination . '">
-						<saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">' . $issuer . '</saml:Issuer>
-						<saml:NameID SPNameQualifier="' . $issuer . '" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">'. $nameId[0] . '</saml:NameID>';
+		
+$requestXmlStr='<?xml version="1.0" encoding="UTF-8"?>' .
+                        '<samlp:LogoutRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="'. generateID() .
+                        '" IssueInstant="' . generateTimestamp() .
+                        '" Version="2.0" Destination="'. $destination . '">
+                        <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">' . $issuer . '</saml:Issuer>
+                        <saml:NameID SPNameQualifier="' . $issuer . '" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">'. $nameId[0] . '</saml:NameID>';
 		if(!empty($sessionIndex)) {
 			$requestXmlStr .= '<samlp:SessionIndex>' . $sessionIndex . '</samlp:SessionIndex>';
 		}
