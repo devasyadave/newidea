@@ -32,9 +32,11 @@
         session_start();
     }
     if(!empty($pluginSettings->getSamlLogoutUrl())){
+        
 	    if(isset($_SESSION['email'])) {
+	        
             $nameId	= $_SESSION['email'];
-
+            
             session_destroy();
   
 		    $issuer = $pluginSettings->getSpEntityId();
@@ -51,7 +53,7 @@
 			
 			$param =array( 'type' => 'private');
 		    $key = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, $param);
-		    $certFilePath ='resources' . DIRECTORY_SEPARATOR . 'sp-key.key';
+		    $certFilePath ='miniorange/sso/resources' . DIRECTORY_SEPARATOR . 'sp-key.key';
 		    $key->loadKey($certFilePath, TRUE);
 		    $objXmlSecDSig = new XMLSecurityDSig();
 		    $signature = $key->signData($samlRequest);

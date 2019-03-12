@@ -43,6 +43,7 @@ final class SSO
                     session_id('attributes');
                     session_start();
                     $_SESSION['email'] = $attrs[$pluginSettings->getSamlAmEmail()];
+                    
                     $_SESSION['username'] = $attrs[$pluginSettings->getSamlAmUsername()];
 
                     if(is_array($custom_attribute_mapping) && !empty($custom_attribute_mapping))
@@ -53,6 +54,7 @@ final class SSO
 
                     //Redirect to application url
                     $applicationUrl = $pluginSettings->getApplicationUrl();
+                    
                     if(!empty($applicationUrl)){
                         header('Location: ' . $applicationUrl);
                         exit();

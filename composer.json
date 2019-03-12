@@ -35,7 +35,8 @@
 			"src/"
 		],
 		"psr-4" : {
-			"provider\\" : "provider/"
+			"provider\\" : "provider/",
+			"MiniOrange\\" : "src/"
 		}
 	},
 	"extra" : {

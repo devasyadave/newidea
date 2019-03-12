@@ -13,7 +13,7 @@ class ssoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       
+        $this->app->make('MiniOrange\Classes\Action\AuthFacadeController');
         
         //
     }
@@ -26,6 +26,7 @@ class ssoServiceProvider extends ServiceProvider
     public function boot()
     {
         //require_once 'autoload.php';
+         
          $this->loadRoutesFrom(__DIR__.'/../src/routes.php');
          $this->loadViewsFrom(__DIR__.'/../src/','newidea');
          $this->publishes([
@@ -39,4 +40,5 @@ $this->publishes([__DIR__.'/../src/resources' => public_path('Miniorange/resourc
     ], 'public');
         //
     }
+  
 }

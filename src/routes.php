@@ -40,7 +40,15 @@ Route::get('login.php/{RelayState?}', function ($RelayState = '/') {
     include_once 'login.php';
 });
 
-Route::get('logout', function () {
+Route::get('login', function () {
+    include_once 'login.php';
+});
+
+Route::get('logout.php', function () {
+    include_once 'logout.php';
+});
+
+Route::post('logout.php', function () {
     include_once 'logout.php';
 });
 
@@ -91,7 +99,13 @@ Route::post('how_to_setup.php', function () {
 
 Route::get('logout.php', function () {
     include_once 'logout.php';
-}); 
+});
+
+Route::get('save', function () {
+    include_once 'Classes/Actions/UserActionController.php';
+});
+
+Route::get('sign', 'MiniOrange\Classes\Actions\AuthFacadeController@signin');
 
 
 
