@@ -13,7 +13,7 @@ class ssoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('MiniOrange\Classes\Action\AuthFacadeController');
+        $this->app->make('MiniOrange\Classes\Actions\AuthFacadeController');
         
         //
     }
