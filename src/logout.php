@@ -1,6 +1,6 @@
 <?php
 
-	include_once "autoload.php";
+	//include_once "autoload.php";
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityKey;
 	use MiniOrange\Helper\Lib\XMLSecLibs\XMLSecurityDSig;
     use MiniOrange\Helper\PluginSettings;
@@ -22,7 +22,8 @@
 		$xpath->registerNamespace('samlp', 'urn:oasis:names:tc:SAML:2.0:protocol');
 		$xpath->registerNamespace('saml', 'urn:oasis:names:tc:SAML:2.0:assertion');
 		if($samlResponseXml->localName == 'LogoutResponse') {
-			header('Location: ' .$logout_url.'?slo=success');
+			//header('Location: ' .$logout_url.'?slo=success');
+			header('Location: logout');
 			exit;
 		} 
 	}

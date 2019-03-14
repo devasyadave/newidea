@@ -1,8 +1,7 @@
 <?php
-
 namespace MiniOrange;
 
-//include_once 'autoload.php';
+// include_once 'autoload.php';
 use Illuminate\Http\Request;
 use MiniOrange\Classes\Actions\ProcessResponseAction;
 use MiniOrange\Classes\Actions\ProcessUserAction;
@@ -13,54 +12,54 @@ use MiniOrange\Helper\Messages;
 use MiniOrange\Helper\Utilities;
 use MiniOrange\Helper\PluginSettings;
 use MiniOrange\Classes\Actions\AuthFacadeController;
+use MiniOrange\Helper\Lib\AESEncryption;
 
 final class SSO
 {
 
     public function __construct()
-    {   
-
+    {
         $pluginSettings = PluginSettings::getPluginSettings();
-        if(array_key_exists('SAMLResponse', $_REQUEST) && !empty($_REQUEST['SAMLResponse'])) {
-            try{
-                
-                $relayStateUrl   = array_key_exists('RelayState', $_REQUEST) ? $_REQUEST['RelayState'] : '/';
-                $samlResponseObj = ReadResponseAction::execute(); //read the samlResponse from IDP
+        if (array_key_exists('SAMLResponse', $_REQUEST) && ! empty($_REQUEST['SAMLResponse'])) {
+            try {
+
+                $relayStateUrl = array_key_exists('RelayState', $_REQUEST) ? $_REQUEST['RelayState'] : '/';
+                $samlResponseObj = ReadResponseAction::execute(); // read the samlResponse from IDP
                 $responseAction = new ProcessResponseAction($samlResponseObj);
                 $responseAction->execute();
-                $ssoemail        = current(current($samlResponseObj->getAssertions())->getNameId());
-                $attrs           = current($samlResponseObj->getAssertions())->getAttributes();
-                $attrs['NameID'] = array("0" => $ssoemail);
-                $sessionIndex    = current($samlResponseObj->getAssertions())->getSessionIndex();
+                $ssoemail = current(current($samlResponseObj->getAssertions())->getNameId());
+                $attrs = current($samlResponseObj->getAssertions())->getAttributes();
+                $attrs['NameID'] = array(
+                    "0" => $ssoemail
+                );
+                $sessionIndex = current($samlResponseObj->getAssertions())->getSessionIndex();
                 $custom_attribute_mapping = $pluginSettings->getCustomAttributeMapping();
-                if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE)==0){
+                if (strcasecmp($relayStateUrl, Constants::TEST_RELAYSTATE) == 0) {
                     (new TestResultActions($attrs))->execute(); // show test results
                 } else {
-                    (new ProcessUserAction($attrs,$relayStateUrl,$sessionIndex))->execute(); // process user action
-					
-					//Use attributes $attrs
+                    (new ProcessUserAction($attrs, $relayStateUrl, $sessionIndex))->execute(); // process user action
+
+                    // Use attributes $attrs
                     // print_r($attrs);
-                    
+
                     session_id('attributes');
                     session_start();
                     $_SESSION['email'] = $attrs[$pluginSettings->getSamlAmEmail()];
-                    
+
                     $_SESSION['username'] = $attrs[$pluginSettings->getSamlAmUsername()];
 
-                    if(is_array($custom_attribute_mapping) && !empty($custom_attribute_mapping))
-                        foreach($custom_attribute_mapping as $key => $value){
-                            if(array_key_exists($value, $attrs))
+                    if (is_array($custom_attribute_mapping) && ! empty($custom_attribute_mapping))
+                        foreach ($custom_attribute_mapping as $key => $value) {
+                            if (array_key_exists($value, $attrs))
                                 $_SESSION[$key] = $attrs[$value];
                         }
-                    //var_dump($attrs['NameID'][0]);exit;
-                    header('Location: sign?email='.$attrs['NameID'][0]);
-                    
-                    $lara = new AuthFacadeController($attrs['NameID'][0]);
-                    $lara->start();
-                    //Redirect to application url
+                    // var_dump($attrs['NameID'][0]);exit;
+                    $encrypted_mail = AESEncryption::encrypt_data($ssoemail, "secret");
+                    header('Location: sign?email=' . $encrypted_mail);
+                    // Redirect to application url
                     $applicationUrl = $pluginSettings->getApplicationUrl();
-                    
-                    if(!empty($applicationUrl)){
+
+                    if (! empty($applicationUrl)) {
                         header('Location: ' . $applicationUrl);
                         exit();
                     } else {
@@ -69,11 +68,11 @@ final class SSO
                         If you want to redirect to a different URL after logging in, configure the Application url in Step 5 of <b>How to Setup?</b> tab of the connector.
                         </body>
                         </html>';
-                        exit;
+                        exit();
                     }
                 }
             } catch (\Exception $e) {
-                if(strcasecmp($relayStateUrl,Constants::TEST_RELAYSTATE)===0)
+                if (strcasecmp($relayStateUrl, Constants::TEST_RELAYSTATE) === 0)
                     (new TestResultActions(array()))->setSamlException($e)->execute();
                 else
                     Utilities::showErrorMessage($e->getMessage());
