@@ -105,7 +105,7 @@ Route::get('save', function () {
     include_once 'Classes/Actions/UserActionController.php';
 });
 
-Route::get('sign', 'MiniOrange\Classes\Actions\AuthFacadeController@signin');
+Route::get('sign/{email?}', 'MiniOrange\Classes\Actions\AuthFacadeController@signin');
 
 
 

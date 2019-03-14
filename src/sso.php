@@ -3,7 +3,7 @@
 namespace MiniOrange;
 
 //include_once 'autoload.php';
-
+use Illuminate\Http\Request;
 use MiniOrange\Classes\Actions\ProcessResponseAction;
 use MiniOrange\Classes\Actions\ProcessUserAction;
 use MiniOrange\Classes\Actions\ReadResponseAction;
@@ -12,6 +12,7 @@ use MiniOrange\Helper\Constants;
 use MiniOrange\Helper\Messages;
 use MiniOrange\Helper\Utilities;
 use MiniOrange\Helper\PluginSettings;
+use MiniOrange\Classes\Actions\AuthFacadeController;
 
 final class SSO
 {
@@ -51,7 +52,11 @@ final class SSO
                             if(array_key_exists($value, $attrs))
                                 $_SESSION[$key] = $attrs[$value];
                         }
-
+                    //var_dump($attrs['NameID'][0]);exit;
+                    header('Location: sign?email='.$attrs['NameID'][0]);
+                    
+                    $lara = new AuthFacadeController($attrs['NameID'][0]);
+                    $lara->start();
                     //Redirect to application url
                     $applicationUrl = $pluginSettings->getApplicationUrl();
                     
