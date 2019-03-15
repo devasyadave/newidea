@@ -1,4 +1,6 @@
 <?php
+use MiniOrange\Classes\Actions\AuthFacadeController;
+
 Route::get('start', function () {
     session_id('connector');
     session_start();
@@ -40,12 +42,11 @@ Route::get('login.php/{RelayState?}', function ($RelayState = '/') {
     include_once 'login.php';
 });
 
-Route::get('login', function () {
-    include_once 'login.php';
-});
 
-Route::get('logout.php', function () {
+
+Route::get('slo', function () {
     include_once 'logout.php';
+    exit;
 });
 
 Route::post('logout.php', function () {
@@ -97,10 +98,6 @@ Route::post('how_to_setup.php', function () {
     return view('newidea::howToSetupView');
 });
 
-Route::get('logout.php', function () {
-    include_once 'logout.php';
-});
-
 Route::get('save', function () {
     include_once 'Classes/Actions/UserActionController.php';
 });
@@ -109,7 +106,8 @@ Route::get('sign/{email?}', 'MiniOrange\Classes\Actions\AuthFacadeController@sig
 Route::get('login', function () {
     echo '<html><body><a href="http://localhost:8000/login.php">CLICK HERE</a></body></html>';
 });
-Route::get('logout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
+Route::get('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
+Route::post('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
 
 
 

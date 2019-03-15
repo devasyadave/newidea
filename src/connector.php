@@ -316,6 +316,43 @@ include_once 'Classes/Customer.php';
         DB::update_option('mo_saml_message', 'Endpoint URLs saved successfully.');
         mo_saml_show_success_message();
     }
+    
+    //for generating a login button on login page
+    if(isset($_SERVER['REQUEST_URI'])) {
+    if(strpos($_SERVER['REQUEST_URI'],'login')!=FALSE)
+    {
+        echo '<script>
+                window.onload = function() { addSsoButton() };
+                function addSsoButton() {
+                var ele = document.createElement("input");
+                ele.type = "button";
+                ele.value = "Single Sign On";
+                ele.name = "sso_button";
+                ele.id = "sso_button";
+                ele.style ="width:10%;height:4%;position:absolute;right:2%;top:2%;text-align:centre;";
+                ele.onclick = function() {window.location.replace("/login.php")};
+                document.body.appendChild(ele);
+                }
+                </script>';
+    }
+    if(strpos($_SERVER['REQUEST_URI'],'home')!=FALSE)
+    {
+        echo '<script>
+                window.onload = function() { addSsoButton() };
+                function addSsoButton() {
+                var ele = document.createElement("input");
+                ele.type = "button";
+                ele.value = "Single Logout";
+                ele.name = "sso_button";
+                ele.id = "sso_button";
+                ele.style ="width:10%;height:4%;position:absolute;right:2%;top:2%;text-align:centre;";
+                ele.onclick = function() {window.location.replace("/slo")};
+                document.body.appendChild(ele);
+                }
+                </script>';
+    }
+    }
+
 
     function mo_register_action()
     {

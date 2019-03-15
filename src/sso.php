@@ -47,19 +47,21 @@ final class SSO
                     $_SESSION['email'] = $attrs[$pluginSettings->getSamlAmEmail()];
 
                     $_SESSION['username'] = $attrs[$pluginSettings->getSamlAmUsername()];
-
+                    
                     if (is_array($custom_attribute_mapping) && ! empty($custom_attribute_mapping))
                         foreach ($custom_attribute_mapping as $key => $value) {
                             if (array_key_exists($value, $attrs))
                                 $_SESSION[$key] = $attrs[$value];
                         }
                     // var_dump($attrs['NameID'][0]);exit;
-                    $encrypted_mail = AESEncryption::encrypt_data($ssoemail, "secret");
-                    header('Location: sign?email=' . $encrypted_mail);
+                    //var_dump($attrs['']);exit;
+                    $encrypted_mail = AESEncryption::encrypt_data($_SESSION['email'][0], "secret");
+                    $encrypted_name = AESEncryption::encrypt_data($_SESSION['username'][0], "secret");
+                    header('Location: sign?email=' . $encrypted_mail.'&name='.$encrypted_name);exit;
                     // Redirect to application url
-                    $applicationUrl = $pluginSettings->getApplicationUrl();
+                    /*$applicationUrl = $pluginSettings->getApplicationUrl();
 
-                    if (! empty($applicationUrl)) {
+                   if (! empty($applicationUrl)) {
                         header('Location: ' . $applicationUrl);
                         exit();
                     } else {
@@ -69,7 +71,7 @@ final class SSO
                         </body>
                         </html>';
                         exit();
-                    }
+                    }*/
                 }
             } catch (\Exception $e) {
                 if (strcasecmp($relayStateUrl, Constants::TEST_RELAYSTATE) === 0)

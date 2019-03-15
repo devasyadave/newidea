@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\User;
 use MiniOrange\Helper\Lib\AESEncryption;
+use MiniOrange\Helper\PluginSettings;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthFacadeController extends Controller
 {
@@ -17,6 +20,8 @@ class AuthFacadeController extends Controller
     protected $redirectTo = '/start';
 
     public $mailid = '';
+
+    public $name = '';
 
     public function __construct()
     {
@@ -33,18 +38,24 @@ class AuthFacadeController extends Controller
 
     public function signin(Request $request)
     {
+        $pluginSettings = PluginSettings::getPluginSettings();
         $encrypted_mail = $request->email;
+        $encrypted_name = $request->name;
         $this->mailid = AESEncryption::decrypt_data($encrypted_mail, "secret");
+        $this->name = AESEncryption::decrypt_data($encrypted_name, "secret");
         if ($this->mailid == '')
-            return redirect('/home');
+            return redirect('');
         $creds = array(
             '_token' => csrf_token(),
             'remember' => 'on',
-            'email' => $this->mailid
+            'email' => $this->mailid,
+            'name' => $this->name
         );
         $request->merge($creds);
         $this->login($request);
-        return redirect('/home');
+        //var_dump($_SERVER);exit;
+        //echo $pluginSettings->getApplicationUrl();exit;
+        return redirect($pluginSettings->getApplicationUrl());
     }
 
     public function login(Request $request)
@@ -84,17 +95,27 @@ class AuthFacadeController extends Controller
          * );
          */
         $user = User::where('email', $request['email'])->first();
+        if ($user == null) { // Create User if not existing
+            $user = new User();
+            $user->email = $request['email'];
+            $user->name = $request['name'];
+            $user->password = Hash::make(Str::random(8));
+            $user->save();
+        }
         $id = $user->id;
         return $this->guard()->loginUsingId($id, True);
     }
+
     public function logout(Request $request)
     {
-        //echo "here";exit;
+        $pluginSettings = PluginSettings::getPluginSettings();
+        // echo "here";exit;
         $this->guard()->logout();
-        
+
         $request->session()->invalidate();
-        
-        return $this->loggedOut($request) ?: redirect('/');
+
+        //return $this->loggedOut($request) ?: redirect('/');
+        return redirect($pluginSettings->getSiteLogoutUrl());
     }
 }
 
