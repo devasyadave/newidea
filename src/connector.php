@@ -361,7 +361,7 @@ closedir($dir);
                 }
                 </script>';
     }
-    if(strpos($_SERVER['REQUEST_URI'],'/home')!=FALSE)
+    if(strpos($_SERVER['REQUEST_URI'],'home')!=FALSE)
     {
         echo '<script>
                 window.onload = function() { addSsoButton() };
