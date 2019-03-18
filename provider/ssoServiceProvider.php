@@ -31,13 +31,13 @@ class ssoServiceProvider extends ServiceProvider
          $this->loadViewsFrom(__DIR__.'/../src/','newidea');
          $this->publishes([
         __DIR__.'/../src/includes/css' => public_path('Miniorange/includes/css'),
-    ], 'public');
+    ], 'mo_assets');
          $this->publishes([__DIR__.'/../src/includes/js/plugins' => public_path('Miniorange/includes/js/plugins'),
-    ], 'public');
+    ], 'mo_assets');
 $this->publishes([__DIR__.'/../src/resources/images' => public_path('Miniorange/resources/images'),
-    ], 'public');
+    ], 'mo_assets');
 $this->publishes([__DIR__.'/../src/resources' => public_path('Miniorange/resources'),
-    ], 'public');
+    ], 'mo_assets');
         //
     }
   

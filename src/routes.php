@@ -103,9 +103,7 @@ Route::get('save', function () {
 });
 
 Route::get('sign/{email?}', 'MiniOrange\Classes\Actions\AuthFacadeController@signin');
-Route::get('login', function () {
-    echo '<html><body><a href="http://localhost:8000/login.php">CLICK HERE</a></body></html>';
-});
+
 Route::get('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
 Route::post('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
 
