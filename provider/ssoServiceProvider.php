@@ -29,4 +29,5 @@ class ssoServiceProvider extends ServiceProvider
          
          $this->loadRoutesFrom(__DIR__.'/../src/routes.php');
          $this->loadViewsFrom(__DIR__.'/../src/','newidea');
+    }
 }
