@@ -319,7 +319,7 @@ include_once 'Classes/Customer.php';
     
     //for generating a login button on login page
     if(isset($_SERVER['REQUEST_URI'])) {
-    if(strpos($_SERVER['REQUEST_URI'],'login')!=FALSE)
+    if($_SERVER['REQUEST_URI'] == 'login')
     {
         echo '<script>
                 window.onload = function() { addSsoButton() };
