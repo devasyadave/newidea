@@ -11,6 +11,32 @@ if(!defined('MSSP_TEST_MODE'))
 define('MSSP_TEST_MODE', FALSE);
 include_once 'Classes/Customer.php';
 
+//copy miniorange css,js,images,etc assets to root folder of laravel app
+$file_paths_array = array('/includes','/resources');
+foreach($file_paths_array as $path) {
+$src = __DIR__.$path;
+$dst = $_SERVER['DOCUMENT_ROOT']."/miniorange/sso".$path;
+recurse_copy($src, $dst);
+}
+//recursive function to copy files within directory
+function recurse_copy($src, $dst) {
+
+$dir = opendir($src);
+
+@mkdir($dst,077,true);
+while (false !== ($file = readdir($dir))) {
+    if (($file != '.') && ($file != '..')) {
+        if (is_dir($src . '/' . $file)) {
+            recurse_copy($src . '/' . $file, $dst . '/' . $file);
+        } else {
+            copy($src . '/' . $file, $dst . '/' . $file);
+        }
+    }
+}
+closedir($dir);
+}
+
+
     /*
      * echo ' SHIFTED TO src/jsLoader.php
      * <!-- Essential javascripts for application to work-->
@@ -319,7 +345,7 @@ include_once 'Classes/Customer.php';
     
     //for generating a login button on login page
     if(isset($_SERVER['REQUEST_URI'])) {
-    if($_SERVER['REQUEST_URI'] == 'login')
+    if($_SERVER['REQUEST_URI'] == '/login')
     {
         echo '<script>
                 window.onload = function() { addSsoButton() };
@@ -335,7 +361,7 @@ include_once 'Classes/Customer.php';
                 }
                 </script>';
     }
-    if(strpos($_SERVER['REQUEST_URI'],'home')!=FALSE)
+    if(strpos($_SERVER['REQUEST_URI'],'/home')!=FALSE)
     {
         echo '<script>
                 window.onload = function() { addSsoButton() };

@@ -29,16 +29,4 @@ class ssoServiceProvider extends ServiceProvider
          
          $this->loadRoutesFrom(__DIR__.'/../src/routes.php');
          $this->loadViewsFrom(__DIR__.'/../src/','newidea');
-         $this->publishes([
-        __DIR__.'/../src/includes/css' => public_path('Miniorange/includes/css'),
-    ], 'mo_assets');
-         $this->publishes([__DIR__.'/../src/includes/js/plugins' => public_path('Miniorange/includes/js/plugins'),
-    ], 'mo_assets');
-$this->publishes([__DIR__.'/../src/resources/images' => public_path('Miniorange/resources/images'),
-    ], 'mo_assets');
-$this->publishes([__DIR__.'/../src/resources' => public_path('Miniorange/resources'),
-    ], 'mo_assets');
-        //
-    }
-  
 }
