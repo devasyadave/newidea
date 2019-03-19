@@ -11,15 +11,18 @@ if (! defined('MSSP_TEST_MODE'))
     define('MSSP_TEST_MODE', FALSE);
 include_once 'Classes/Customer.php';
 
-// copy miniorange css,js,images,etc assets to root folder of laravel app
-$file_paths_array = array(
-    '/includes',
-    '/resources'
-);
-foreach ($file_paths_array as $path) {
-    $src = __DIR__ . $path;
-    $dst = $_SERVER['DOCUMENT_ROOT'] . "/miniorange/sso" . $path;
-    recurse_copy($src, $dst);
+// check if the directory containing CSS,JS,Resources exists
+if (! is_dir($_SERVER['DOCUMENT_ROOT'] . '/miniorange/sso')) {
+    // copy miniorange css,js,images,etc assets to root folder of laravel app
+    $file_paths_array = array(
+        '/includes',
+        '/resources'
+    );
+    foreach ($file_paths_array as $path) {
+        $src = __DIR__ . $path;
+        $dst = $_SERVER['DOCUMENT_ROOT'] . "/miniorange/sso" . $path;
+        recurse_copy($src, $dst);
+    }
 }
 
 // recursive function to copy files within directory
@@ -54,9 +57,12 @@ if (isset($_SERVER['REQUEST_URI'])) {
                 ele.value = "Single Sign On";
                 ele.name = "sso_button";
                 ele.id = "sso_button";
-                ele.style ="width:10%;height:4%;position:absolute;right:2%;top:2%;text-align:centre;";
+                ele.style ="width: fit-content;float: right;margin-right: -6%;";
                 ele.onclick = function() {window.location.replace("/login.php")};
                 document.body.appendChild(ele);
+                var mainObj = document.getElementsByTagName("NAV")[0];
+                var childs = mainObj.childNodes;
+                childs[0].appendChild(ele);
                 }
                 </script>';
     }
@@ -450,10 +456,13 @@ function get_current_customer()
 function mo_saml_show_success_message()
 {
     echo '<script>
-    var message = document.getElementById("saml_message");
-    message.classList.add("success-message");
-    message.innerText = "' . DB::get_option('mo_saml_message') . '"
-    </script>';
+        window.onload = function() {alert("HERE");}</script>';
+    /*
+     * var message = document.getElementById("saml_message");
+     * message.classList.add("success-message");
+     * message.innerText = "' . DB::get_option('mo_saml_message') . '";
+     * </script>';
+     */
 
     // echo '<p class="success-message">' . DB::get_option('mo_saml_message') . '</p>';
 }
@@ -666,7 +675,8 @@ function mo_saml_show_customer_details()
 	<table>
 		<tr>
 			<td>
-				<form name="f1" method="post" action="" id="mo_saml_goto_login_form">
+				<form name="f1" method="post" action="" id="mo_saml_goto_login_form"
+					style="margin-block-end: auto;">
 					<input type="hidden" value="change_miniorange" name="option" /> <input
 						type="submit" value="Change Email Address" class="btn btn-primary" />
 				</form>

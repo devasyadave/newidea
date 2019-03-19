@@ -1,9 +1,7 @@
 <?php
+namespace MiniOrange\Classes\Actions;
 
 use MiniOrange;
-
-namespace MiniOrange\Classes\Actions\;
-
 use Illuminate\Auth\Events\Logout;
 
 class LogoutListener
@@ -26,7 +24,7 @@ class LogoutListener
      */
     public function handle(Logout $event)
     {
-        include_once 'logout.php';
+        include_once __DIR__.'/../../logout.php';
         // Access the order using $event->order...
     }
 }

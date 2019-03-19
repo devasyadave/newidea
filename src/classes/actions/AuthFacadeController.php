@@ -116,6 +116,7 @@ class AuthFacadeController extends Controller
 
         //return $this->loggedOut($request) ?: redirect('/');
         return redirect($pluginSettings->getSiteLogoutUrl());
+        exit;
     }
 }
 

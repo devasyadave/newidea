@@ -70,7 +70,7 @@ if (! empty($pluginSettings->getSamlLogoutUrl())) {
 }
 if (!empty($logout_url)) {
     session_destroy();
-    header('Location: mologout' );
+    header('Location: mologout');
     exit();
 }
 
