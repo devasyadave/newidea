@@ -161,6 +161,15 @@
                         </label>&nbsp
                         
                       </div>
+                      <div class="animated-checkbox">
+                        <label>
+                          <input type="checkbox" id="force_sso" name="force_sso"
+                          <?php
+                          if(DB::get_option('force_sso') != false){echo ' checked ';}
+                          ?>><span class="label-text">Force Single Sign On</span>
+                        </label>&nbsp
+                        
+                      </div>
 
 
                     
@@ -189,7 +198,7 @@
                       <input class="form-control" id="sp_entity_id" name="sp_entity_id" type="text" readonly=""
                       <?php
                             $entity_id = $base_url . 'miniorange_php_saml_connector';
-                            echo ' value="' . $entity_id . '" ';?>
+                            echo ' value="' . $entity_id . '" ';?>>
                     </div>
 
                     <div class="form-group">

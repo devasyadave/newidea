@@ -42,7 +42,8 @@
 	"extra" : {
 		"laravel" : {
 			"providers" : [
-				"provider\\ssoServiceProvider"
+				"provider\\ssoServiceProvider",
+				"provider\\ssoEventServiceProvider"
 			]
 		}
 	},
