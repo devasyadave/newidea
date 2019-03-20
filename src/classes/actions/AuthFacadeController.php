@@ -108,15 +108,20 @@ class AuthFacadeController extends Controller
 
     public function logout(Request $request)
     {
+        //echo "here";exit;
         $pluginSettings = PluginSettings::getPluginSettings();
         // echo "here";exit;
-        $this->guard()->logout();
-
+        //$this->guard()->logout();
         $request->session()->invalidate();
-
-        //return $this->loggedOut($request) ?: redirect('/');
-        return redirect($pluginSettings->getSiteLogoutUrl());
-        exit;
+        //echo "herhere";exit;
+        return $this->loggedOut($request) ?: redirect('/');
+        //return redirect($pluginSettings->getSiteLogoutUrl());
+    }
+    protected function loggedOut(Request $request)
+    {
+        
+        return redirect('slo');
+        //include_once __DIR__.'/../../logout.php'; 
     }
 }
 

@@ -3,8 +3,12 @@ namespace MiniOrange\Classes\Actions;
 
 use MiniOrange;
 use Illuminate\Auth\Events\Logout;
+use MiniOrange\Classes\Actions\AuthFacadeController;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 
-class LogoutListener
+
+class LogoutListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -24,7 +28,9 @@ class LogoutListener
      */
     public function handle(Logout $event)
     {
-        include_once __DIR__.'/../../logout.php';
+        header('Location: mologout');
+        exit;
+        //include_once __DIR__.'/../../logout.php';
         // Access the order using $event->order...
     }
 }
