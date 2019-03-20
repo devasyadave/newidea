@@ -26,7 +26,7 @@
     "saml_am_email": "NameID",
     "saml_am_username": "NameID",
     "mo_saml_custom_attrs_mapping": [],
-    "force_sso": false,
+    "force_sso": true,
     "application_url": "home",
     "site_logout_url": ""
 }
