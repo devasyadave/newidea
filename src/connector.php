@@ -455,8 +455,13 @@ function get_current_customer()
 
 function mo_saml_show_success_message()
 {
+    if(isset($_SESSION['show_error_msg']))
+        unset($_SESSION['show_error_msg']);
     echo '<script>
         window.onload = function() {alert("HERE");}</script>';
+    session_id('connector');
+    session_start();
+    $_SESSION['show_success_msg'] = 1;
     /*
      * var message = document.getElementById("saml_message");
      * message.classList.add("success-message");
@@ -469,11 +474,17 @@ function mo_saml_show_success_message()
 
 function mo_saml_show_error_message()
 {
+    if(isset($_SESSION['show_success_msg']))
+        unset($_SESSION['show_success_msg']);
     echo '<script>
     var message = document.getElementById("saml_message");
     message.classList.add("error-message");
     message.innerText = "' . DB::get_option('mo_saml_message') . '"
     </script>';
+    session_id('connector');   
+    session_start();
+    $_SESSION['show_error_msg'] = 1;
+    
 
     // echo '<p class="error-message">' . DB::get_option('mo_saml_message') . '</p>';
 }

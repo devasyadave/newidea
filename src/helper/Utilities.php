@@ -59,6 +59,7 @@
          */
         public static function getImageUrl($imgFileName)
         {
+            echo self::getBaseUrl().'/'.MSSP_NAME.'/resources/images/'.$imgFileName;exit;
             return self::getBaseUrl().'/'.MSSP_NAME.'/resources/images/'.$imgFileName;
         }
 

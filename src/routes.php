@@ -42,11 +42,9 @@ Route::get('login.php/{RelayState?}', function ($RelayState = '/') {
     include_once 'login.php';
 });
 
-
-
 Route::get('slo', function () {
     include_once 'logout.php';
-    exit;
+    exit();
 });
 
 Route::post('logout.php', function () {
@@ -80,6 +78,11 @@ Route::get('support.php', function () {
     include_once 'jsLoader.php';
     return view('newidea::supportView');
 });
+Route::post('support.php', function () {
+    include_once 'support.php';
+    include_once 'jsLoader.php';
+    return view('newidea::supportView');
+});
 
 Route::post('account.php', function () {
     include_once 'account.php';
@@ -104,8 +107,8 @@ Route::get('save', function () {
 
 Route::get('sign/{email?}', 'MiniOrange\Classes\Actions\AuthFacadeController@signin');
 
-Route::get('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
-Route::post('mologout','MiniOrange\Classes\Actions\AuthFacadeController@logout');
+Route::get('mologout', 'MiniOrange\Classes\Actions\AuthFacadeController@logout');
+Route::post('mologout', 'MiniOrange\Classes\Actions\AuthFacadeController@logout');
 
 
 

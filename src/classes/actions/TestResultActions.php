@@ -26,11 +26,11 @@ class TestResultActions
     private $successHeader  = ' <div style="color: #3c763d;background-color: #dff0d8; padding:2%%;margin-bottom:20px;text-align:center; 
                                     border:1px solid #AEDB9A; font-size:18pt;">TEST SUCCESSFUL
                                 </div>
-                                <div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;" src="miniorange/sso/resources/images/right.png"></div>';
+                                <div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;" src="{{right}}"></div>';
 
     private $errorHeader    = ' <div style="color: #a94442;background-color: #f2dede;padding: 15px;margin-bottom: 20px;text-align:center;
                                     border:1px solid #E6B3B2;font-size:18pt;">TEST FAILED
-                                </div><div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;"src="miniorange/sso/resources/wrong.png"></div>';
+                                </div><div style="display:block;text-align:center;margin-bottom:4%%;"><img style="width:15%%;"src="{{wrong}}"></div>';
 
     private $commonBody  = '<span style="font-size:14pt;"><b>Hello</b>, {{email}}</span><br/>
                                 <p style="font-weight:bold;font-size:14pt;margin-left:1%%;">ATTRIBUTES RECEIVED:</p>
@@ -102,8 +102,9 @@ class TestResultActions
     private function processTemplateHeader()
     {
         $header = Utilities::isBlank($this->nameId) ? $this->errorHeader : $this->successHeader;
-        $header = str_replace("{{right}}",Utilities::getImageUrl(Constants::IMAGE_RIGHT),$header);
-        $header = str_replace("{{wrong}}",Utilities::getImageUrl(Constants::IMAGE_WRONG),$header);
+        $header = str_replace("{{right}}","miniorange/sso/resources/images/right.png",$header);
+        //var_dump($header);exit;
+        $header = str_replace("{{wrong}}","miniorange/sso/resources/images/wrong.png",$header);
         $this->template = str_replace("{{header}}",$header,$this->template);
     }
 
@@ -115,7 +116,7 @@ class TestResultActions
     {
         $this->exceptionBody = str_replace("{{exceptionmessage}}",$this->samlException->getMessage(),$this->exceptionBody);
         $this->exceptionBody = str_replace("{{certErrorDiv}}",$this->processCertErrors(),$this->exceptionBody);
-        $response = $this->samlResponse instanceof SAMLResponseException ? $this->samlException->getSamlResponse() : "";
+        $response = $this->samlException instanceof SAMLResponseException ? $this->samlException->getSamlResponse() : "";
         $this->samlResponse = str_replace("{{samlresponse}}",$response,$this->samlResponse);
         $this->exceptionBody = str_replace("{{samlResponseDiv}}",$this->samlResponse,$this->exceptionBody);
         $this->template = str_replace("{{commonbody}}",$this->exceptionBody,$this->template);

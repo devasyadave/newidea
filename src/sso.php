@@ -22,7 +22,7 @@ final class SSO
         $pluginSettings = PluginSettings::getPluginSettings();
         if (array_key_exists('SAMLResponse', $_REQUEST) && ! empty($_REQUEST['SAMLResponse'])) {
             try {
-
+                
                 $relayStateUrl = array_key_exists('RelayState', $_REQUEST) ? $_REQUEST['RelayState'] : '/';
                 $samlResponseObj = ReadResponseAction::execute(); // read the samlResponse from IDP
                 $responseAction = new ProcessResponseAction($samlResponseObj);
@@ -34,6 +34,7 @@ final class SSO
                 );
                 $sessionIndex = current($samlResponseObj->getAssertions())->getSessionIndex();
                 $custom_attribute_mapping = $pluginSettings->getCustomAttributeMapping();
+                
                 if (strcasecmp($relayStateUrl, Constants::TEST_RELAYSTATE) == 0) {
                     (new TestResultActions($attrs))->execute(); // show test results
                 } else {
@@ -75,10 +76,9 @@ final class SSO
                 }
             } catch (\Exception $e) {
                 if (strcasecmp($relayStateUrl, Constants::TEST_RELAYSTATE) === 0)
-                    (new TestResultActions(array()))->setSamlException($e)->execute();
+                    (new TestResultActions(array(), $e))->execute();
                 else
                     Utilities::showErrorMessage($e->getMessage());
-                echo "Exception encountered";
             }
         } else {
             Utilities::showErrorMessage(Messages::MISSING_SAML_RESPONSE);

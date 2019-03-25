@@ -169,3 +169,26 @@
 
     </body>
 </html>
+<?php 
+use MiniOrange\Helper\DB as setupDB;
+if (isset($_SESSION['show_success_msg']))
+{
+    
+    echo '<script>
+    var message = document.getElementById("saml_message");
+    message.classList.add("success-message");
+    message.innerText = "' . setupDB::get_option('mo_saml_message') . '"
+    </script>';
+    unset($_SESSION['show_success_msg']);
+    exit;
+}
+if ( isset($_SESSION['show_error_msg']))
+{
+    echo '<script>
+    var message = document.getElementById("saml_message");
+    message.classList.add("error-message");
+    message.innerText = "' . DB::get_option('mo_saml_message') . '"
+    </script>';
+    unset($_SESSION['show_error_msg']);
+}
+?>
