@@ -457,8 +457,6 @@ function mo_saml_show_success_message()
 {
     if(isset($_SESSION['show_error_msg']))
         unset($_SESSION['show_error_msg']);
-    echo '<script>
-        window.onload = function() {alert("HERE");}</script>';
     session_id('connector');
     session_start();
     $_SESSION['show_success_msg'] = 1;
